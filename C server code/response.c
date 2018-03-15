@@ -28,7 +28,7 @@ void main_html_response(int fd, char *filename1) {
         perror("write");
     }
 
-    FILE *in_fp = fopen("main.html", "r");
+    FILE *in_fp = fopen(filename1, "rb");
     int n1 = fileno(in_fp);
     int n;
     char buf[MAXLINE];
@@ -49,7 +49,7 @@ void main_css_response(int fd, char *filename1) {
         perror("write");
     }
 
-    FILE *in_fp = fopen("main.css", "r");
+    FILE *in_fp = fopen(filename1, "rb");
     int n1 = fileno(in_fp);
     int n;
     char buf[MAXLINE];
@@ -70,7 +70,7 @@ void main_js_response(int fd, char *filename1) {
         perror("write");
     }
 
-    FILE *in_fp = fopen("main.css", "r");
+    FILE *in_fp = fopen(filename1, "rb");
     int n1 = fileno(in_fp);
     int n;
     char buf[MAXLINE];

@@ -14,11 +14,6 @@
 #define GET "GET"
 #define POST "POST"
 #define MAIN_HTML "/main.html"
-#define IMAGE_FILTER "/image-filter"
-#define IMAGE_UPLOAD "/image-upload"
-
-#define IMAGE_DIR "images/"
-#define FILTER_DIR "filters/"
 
 #define POST_BOUNDARY_HEADER "Content-Type: multipart/form-data; boundary="
 

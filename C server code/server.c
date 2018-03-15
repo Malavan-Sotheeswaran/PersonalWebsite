@@ -64,37 +64,29 @@ int handle_client(ClientState *client) {
     }
     if(strcmp(client->reqData->method,GET) == 0){
         if(strcmp(client->reqData->path,MAIN_HTML) == 0){
-            main_html_response(client->sock,"main.html");
-        }
-        else if(strcmp(client->reqData->path,IMAGE_FILTER) == 0){
-            image_filter_response(client->sock,client->reqData);
+            main_html_response(client->sock,"../main.html");
         }
         else if(strcmp(client->reqData->path,"/") == 0){
-            main_html_response(client->sock, "main.html");
+            main_html_response(client->sock, "../main.html");
         }
         else if(strcmp(client->reqData->path,"/main.css") == 0){
-            main_css_response(client->sock, "main.css");
+            main_css_response(client->sock, "../main.css");
         }
         else if(strcmp(client->reqData->path,"/main.js") == 0){
-            main_img_response(client->sock, "main.js");
+            main_img_response(client->sock, "../main.js");
         }
         else if(strcmp(client->reqData->path,"/202125.jpg") == 0){
-            main_img_response(client->sock, "202125.jpg");
+            main_img_response(client->sock, "../202125.jpg");
         }
         else if(strcmp(client->reqData->path,"/Lmao.wav") == 0){
-            main_wav_response(client->sock, "Lmao.wav");
+            main_wav_response(client->sock, "../Lmao.wav");
         }
         else{
             not_found_response(client->sock);
         }
     }
     else if(strcmp(client->reqData->method,POST) == 0){
-        if(strcmp(client->reqData->path,IMAGE_UPLOAD) == 0){
-            image_upload_response(client);
-        }
-        else{
-            not_found_response(client->sock);
-        }
+        not_found_response(client->sock);
     }
     else{
         not_found_response(client->sock);

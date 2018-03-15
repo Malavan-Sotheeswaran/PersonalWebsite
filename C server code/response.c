@@ -124,6 +124,27 @@ void main_wav_response(int fd, char *filename1) {
     fclose(in_fp);
 }
 
+void main_icon_response(int fd, char *filename1) {
+    char *header =
+        "HTTP/1.1 200 OK\r\n"
+        "Content-type: image/png\r\n\r\n";
+
+    if(write(fd, header, strlen(header)) == -1) {
+        perror("write");
+    }
+
+    FILE *in_fp = fopen(filename1, "rb");
+    int n1 = fileno(in_fp);
+    int n;
+    char buf[MAXLINE];
+    while ((n = read(n1, buf, MAXLINE)) > 0) {
+        if(write(fd, buf, n) < n) {
+            perror("write");
+        }
+    }
+    fclose(in_fp);
+}
+
 /*
  * Write the header for a bitmap image response to the given fd.
  */

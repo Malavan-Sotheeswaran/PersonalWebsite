@@ -81,6 +81,12 @@ int handle_client(ClientState *client) {
         else if(strcmp(client->reqData->path,"/Lmao.wav") == 0){
             main_wav_response(client->sock, "../Lmao.wav");
         }
+        else if(strcmp(client->reqData->path,"/favicon-32x32.png") == 0){
+            main_icon_response(client->sock, "../favicon-32x32.png");
+        }
+        else if(strcmp(client->reqData->path,"/favicon-16x16.png") == 0){
+            main_icon_response(client->sock, "../favicon-16x16.png");
+        }
         else{
             not_found_response(client->sock);
         }

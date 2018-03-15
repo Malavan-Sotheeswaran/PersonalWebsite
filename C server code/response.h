@@ -12,7 +12,7 @@ void main_html_response(int fd, char *filename1);
 void main_css_response(int fd, char *filename1);
 void main_img_response(int fd, char *filename1);
 void main_wav_response(int fd, char *filename1);
-
+void main_icon_response(int fd, char *filename1);
 
 
 

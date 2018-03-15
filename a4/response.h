@@ -6,25 +6,14 @@
 
 
 /*
- * Write the main.html response to the given fd.
- * This response dynamically populates the image-filter form with
- * the filenames located in IMAGE_DIR.
+ * Write the main responses to the given fd.
  */
 void main_html_response(int fd, char *filename1);
 void main_css_response(int fd, char *filename1);
 void main_img_response(int fd, char *filename1);
 void main_wav_response(int fd, char *filename1);
 
-/*
- * Write an response for the image-filter route with the given request data.
- */
-void image_filter_response(int fd, const ReqData *reqData);
 
-
-/*
- * Respond to an image-upload request.
- */
-void image_upload_response(ClientState *client);
 
 
 /*

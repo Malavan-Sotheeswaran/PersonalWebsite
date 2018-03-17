@@ -19,6 +19,9 @@ header{
     top: 0px;
     font-size: 35pt;
 }
+.content{
+    margin-top: 3%;
+}
 button{
     background-color: tomato;
     background-size: contain;

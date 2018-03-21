@@ -82,7 +82,7 @@ void main_js_response(int fd, char *filename1) {
     fclose(in_fp);
 }
 
-void main_img_response(int fd, char *filename1) {
+void main_jpg_response(int fd, char *filename1) {
     char *header =
         "HTTP/1.1 200 OK\r\n"
         "Content-type: image/jpeg\r\n\r\n";
@@ -124,7 +124,7 @@ void main_wav_response(int fd, char *filename1) {
     fclose(in_fp);
 }
 
-void main_icon_response(int fd, char *filename1) {
+void main_png_response(int fd, char *filename1) {
     char *header =
         "HTTP/1.1 200 OK\r\n"
         "Content-type: image/png\r\n\r\n";

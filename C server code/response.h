@@ -10,9 +10,10 @@
  */
 void main_html_response(int fd, char *filename1);
 void main_css_response(int fd, char *filename1);
-void main_img_response(int fd, char *filename1);
+void main_js_response(int fd, char *filename1);
+void main_jpg_response(int fd, char *filename1);
 void main_wav_response(int fd, char *filename1);
-void main_icon_response(int fd, char *filename1);
+void main_png_response(int fd, char *filename1);
 
 
 

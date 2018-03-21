@@ -76,16 +76,16 @@ int handle_client(ClientState *client) {
             main_css_response(client->sock, strcat(dots,client->reqData->path));
         }
         else if(strcmp(client->reqData->path + strlen(client->reqData->path) - 3,".js") == 0){
-            main_img_response(client->sock, strcat(dots,client->reqData->path));
+            main_js_response(client->sock, strcat(dots,client->reqData->path));
         }
         else if(strcmp(client->reqData->path + strlen(client->reqData->path) - 4,".jpg") == 0){
-            main_img_response(client->sock, strcat(dots,client->reqData->path));
+            main_jpg_response(client->sock, strcat(dots,client->reqData->path));
         }
         else if(strcmp(client->reqData->path + strlen(client->reqData->path) - 4,".wav") == 0){
             main_wav_response(client->sock, strcat(dots,client->reqData->path));
         }
         else if(strcmp(client->reqData->path + strlen(client->reqData->path) - 4,".png") == 0){
-            main_icon_response(client->sock, strcat(dots,client->reqData->path));
+            main_png_response(client->sock, strcat(dots,client->reqData->path));
         }
         else{
             not_found_response(client->sock);

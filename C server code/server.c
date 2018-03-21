@@ -8,7 +8,7 @@
 #include <sys/socket.h>
 #include <errno.h>
 #include <netinet/in.h>    /* Internet domain header */
-
+#include <regex.h>
 #include "socket.h"
 #include "request.h"
 #include "response.h"
@@ -62,30 +62,30 @@ int handle_client(ClientState *client) {
     else if(n > 0){
         return 1;
     }
+    char *dots = malloc(MAXLINE);
+    dots[0] = '.';
+    dots[1] = '.';
     if(strcmp(client->reqData->method,GET) == 0){
-        if(strcmp(client->reqData->path,MAIN_HTML) == 0){
-            main_html_response(client->sock,"../main.html");
-        }
-        else if(strcmp(client->reqData->path,"/") == 0){
+        if(strcmp(client->reqData->path,"/") == 0){
             main_html_response(client->sock, "../main.html");
         }
-        else if(strcmp(client->reqData->path,"/main.css") == 0){
-            main_css_response(client->sock, "../main.css");
+        else if(strcmp(client->reqData->path + strlen(client->reqData->path) - 5,".html") == 0){
+            main_html_response(client->sock,strcat(dots,client->reqData->path));
         }
-        else if(strcmp(client->reqData->path,"/main.js") == 0){
-            main_img_response(client->sock, "../main.js");
+        else if(strcmp(client->reqData->path + strlen(client->reqData->path) - 4,".css") == 0){
+            main_css_response(client->sock, strcat(dots,client->reqData->path));
         }
-        else if(strcmp(client->reqData->path,"/202125.jpg") == 0){
-            main_img_response(client->sock, "../202125.jpg");
+        else if(strcmp(client->reqData->path + strlen(client->reqData->path) - 3,".js") == 0){
+            main_img_response(client->sock, strcat(dots,client->reqData->path));
         }
-        else if(strcmp(client->reqData->path,"/Lmao.wav") == 0){
-            main_wav_response(client->sock, "../Lmao.wav");
+        else if(strcmp(client->reqData->path + strlen(client->reqData->path) - 4,".jpg") == 0){
+            main_img_response(client->sock, strcat(dots,client->reqData->path));
         }
-        else if(strcmp(client->reqData->path,"/favicon-32x32.png") == 0){
-            main_icon_response(client->sock, "../favicon-32x32.png");
+        else if(strcmp(client->reqData->path + strlen(client->reqData->path) - 4,".wav") == 0){
+            main_wav_response(client->sock, strcat(dots,client->reqData->path));
         }
-        else if(strcmp(client->reqData->path,"/favicon-16x16.png") == 0){
-            main_icon_response(client->sock, "../favicon-16x16.png");
+        else if(strcmp(client->reqData->path + strlen(client->reqData->path) - 4,".png") == 0){
+            main_icon_response(client->sock, strcat(dots,client->reqData->path));
         }
         else{
             not_found_response(client->sock);
@@ -97,8 +97,7 @@ int handle_client(ClientState *client) {
     else{
         not_found_response(client->sock);
     }
-
-
+    free(dots);
     close(client->sock);
     exit(0);
 }
